@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/apirest/agendamento")
 public class AgendamentoController {
     
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("data") Date data,
                         @RequestParam("clinte") Cliente cliente,
