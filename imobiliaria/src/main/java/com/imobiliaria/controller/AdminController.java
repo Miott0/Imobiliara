@@ -16,7 +16,7 @@ import com.imobiliaria.entities.Administrador;
 @RequestMapping("/apirest/admin")
 public class AdminController {
     
-    @PostMapping("/criar")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("id") int id) { 
        Administrador admin = new Administrador(id);
@@ -28,13 +28,13 @@ public class AdminController {
         return id + " Ok";
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String atualizar() {
+    public String atualizar(@PathVariable("id") int id) {
         return "X";
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("")
     @ResponseStatus(HttpStatus.OK)
     public String deletar( @RequestParam("id") int id){
         return id + " Agendamento deletado";
