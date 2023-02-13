@@ -42,7 +42,7 @@ public class AgendamentoController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deletar( @RequestParam("id") int id){
+    public String deletar(@PathVariable("id") int id){
         return id + " Agendamento deletado";
     }
 }
