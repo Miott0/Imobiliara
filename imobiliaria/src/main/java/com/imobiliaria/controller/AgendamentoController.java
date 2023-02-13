@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/apirest/agendamento")
 public class AgendamentoController {
     
-    @PostMapping("/criar")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("data") Date data,
                         @RequestParam("clinte") Cliente cliente,
@@ -34,13 +34,13 @@ public class AgendamentoController {
         return id + " Ok";
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String atualizar() {
+    public String atualizar(@PathVariable("id") int id) {
         return "X";
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String deletar( @RequestParam("id") int id){
         return id + " Agendamento deletado";
