@@ -34,7 +34,7 @@ public class CorretorController {
         return id + " Ok";
     }
 
-    @PutMapping("")
+    @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     public String atualizar(@RequestParam("nome") String nome,
                             @RequestParam("sobrenome") String sobrenome,
