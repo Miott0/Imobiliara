@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class EnderecoControlle {
 
 
-    @PostMapping("/criar")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("rua") String rua,
                         @RequestParam("numero") String numero,
@@ -39,15 +39,15 @@ public class EnderecoControlle {
         return id + " Ok";
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String atualizar() {
         return "x";  
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deletar( @RequestParam("id") int id){
+    public String deletar(@PathVariable("id") int id){
         return id + " endereco deletada";
     }
 }
