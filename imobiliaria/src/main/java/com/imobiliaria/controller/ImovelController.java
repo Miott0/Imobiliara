@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ImovelController {
     
 
-    @PostMapping("/criar")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("tipo_imovel") String tipo_imovel,
                         @RequestParam("area") int area,
@@ -42,15 +42,15 @@ public class ImovelController {
         return id + " Ok";
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping(/{id})
     @ResponseStatus(HttpStatus.OK)
-    public String atualizar() {
+    public String atualizar(@PathVariable("id") int id) {
         return "x";  
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deletar( @RequestParam("id") int id){
+    public String deletar(@PathVariable("id") int id){
         return id + " endereco deletada";
     }
 }
