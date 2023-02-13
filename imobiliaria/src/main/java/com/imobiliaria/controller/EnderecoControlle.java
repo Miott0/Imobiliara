@@ -41,7 +41,7 @@ public class EnderecoControlle {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String atualizar() {
+    public String atualizar(@PathVariable("id") int id) {
         return "x";  
     }
 
