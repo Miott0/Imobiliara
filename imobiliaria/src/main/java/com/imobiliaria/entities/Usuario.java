@@ -1,30 +1,31 @@
 package com.imobiliaria.entities;
 
-public abstract class Usuario {
+public abstract class Usuario{
     private String nome;
     private String sobrenome;
     private String email;
 
-    public String getEmail() {
+    public String getEmail(){
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email){
         this.email = email;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    public String getSobrenome() {
+    public String getSobrenome(){
         return sobrenome;
     }
-    public void setSobrenome(String sobrenome) {
+
+    public void setSobrenome(String sobrenome){
         this.sobrenome = sobrenome;
     }
 }

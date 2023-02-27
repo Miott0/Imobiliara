@@ -1,8 +1,19 @@
 package com.imobiliaria.entities;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Corretor")
 public class Corretor extends Usuario{
-    private String senha;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
     private int id;
+
+    @Column(name="senha")
+    private String senha;
+
+    @Column(name="aprovado")
     private boolean aprovado = false;
 
     public Corretor(){

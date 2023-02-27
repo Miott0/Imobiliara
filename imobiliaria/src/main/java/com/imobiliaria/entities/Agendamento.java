@@ -1,12 +1,28 @@
 package com.imobiliaria.entities;
+import jakarta.persistence.*;
+
 
 import java.util.Date;
 
+
+@Entity
+@Table(name = "Agendamento")
 public class Agendamento {
-    private Date data = new Date();
-    private Corretor corretor;
-    private Cliente cliente;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
     private int id;
+
+    @Column(name="data")
+    private Date data = new Date();
+
+    @Column(name="corretor")
+    private Corretor corretor;
+
+    @Column(name="cliente")
+    private Cliente cliente;
+    
 
     public Agendamento(){
 

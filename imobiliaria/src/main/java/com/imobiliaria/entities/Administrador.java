@@ -1,9 +1,19 @@
 package com.imobiliaria.entities;
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "Administrador")
 public class Administrador {
-    private String senha;
-    private int id; 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
+    private int id;
+
+    @Column(name ="senha")
+    private String senha;
+    
     public Administrador(){
 
     }

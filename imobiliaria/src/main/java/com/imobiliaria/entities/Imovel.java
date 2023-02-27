@@ -1,29 +1,63 @@
 package com.imobiliaria.entities;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Imovel")
 public class Imovel {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
     private int id;
-    private String tipo_imovel;
+
+    @Column(name="tipo_imovel")
+    private TipoImovel tipo_imovel;
+
+    @Column(name="area")
     private int area;
+
+    @Column(name="valor_venda")
     private float valor_venda;
+
+    @Column(name="valor_aluguel")
     private float valor_aluguel;
+
+    @Column(name="qtd_quartos")
     private int qtd_quartos;
-    private String aluguel_venda;
+
+    @Column(name="aluguel_venda")
+    private TipoNegociacao aluguel_venda;
+
+    @Column(name="negociado")
     private boolean negociado;
+
+    @Column(name="valido")
     private boolean valido;
+
+    @Column(name="endereco")
     private Endereco endereco;
-    private Cliente Cliete;
+
+    @OneToOne
+    @JoinColumn(name = "clinte_id")
+    private Cliente cliente;
+
+    @OneToOne
+    @JoinColumn(name = "corretor_id")
     private Corretor corretor;
 
+    
     public Imovel() {
 
     }
 
 
-    public String getTipo_imovel() {
+    public TipoImovel getTipo_imovel() {
         return tipo_imovel;
     }
 
-    public void setTipo_imovel(String tipo_imovel) {
+    public void setTipo_imovel(TipoImovel tipo_imovel) {
         this.tipo_imovel = tipo_imovel;
     }
 
@@ -59,11 +93,11 @@ public class Imovel {
         this.qtd_quartos = qtd_quartos;
     }
 
-    public String getAluguel_venda() {
+    public TipoNegociacao getAluguel_venda() {
         return aluguel_venda;
     }
 
-    public void setAluguel_venda(String aluguel_venda) {
+    public void setAluguel_venda(TipoNegociacao aluguel_venda) {
         this.aluguel_venda = aluguel_venda;
     }
 
@@ -92,11 +126,11 @@ public class Imovel {
     }
 
     public Cliente getCliete() {
-        return Cliete;
+        return cliente;
     }
 
-    public void setCliete(Cliente cliete) {
-        Cliete = cliete;
+    public void setCliete(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Corretor getCorretor() {
@@ -116,17 +150,8 @@ public class Imovel {
         this.id = id;
     }
 
-    public void RegistrarImovel(String aluguel_venda, int valor) {
-        this.aluguel_venda = aluguel_venda;
-        if (this.aluguel_venda == "aluguel e venda") {
-            this.valor_venda = valor;
-            this.valor_aluguel = valor;
-        } else if (this.aluguel_venda == "venda") {
-            this.valor_venda = valor;
-        } else {
-            this.valor_aluguel = valor;
-        }
-
+    public void RegistrarImovel(){
+    
     }
 
     public boolean DefinirStatus() {

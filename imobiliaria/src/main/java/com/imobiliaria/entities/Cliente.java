@@ -1,9 +1,20 @@
 package com.imobiliaria.entities;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "Cliente")
 public class Cliente extends Usuario{
-    private String senha; 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
     private int id;
 
+    @Column(name="senha")
+    private String senha; 
+    
     public Cliente(){
 
     }

@@ -4,6 +4,7 @@ package com.imobiliaria.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imobiliaria.entities.Imovel;
+import com.imobiliaria.entities.TipoImovel;
 import com.imobiliaria.entities.Endereco;
 
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class ImovelController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void criar(@RequestParam("tipo_imovel") String tipo_imovel,
+    public void criar(@RequestParam("tipo_imovel") TipoImovel tipo_imovel,
                         @RequestParam("area") int area,
                         @RequestParam("negociado") boolean negociado,
                         @RequestParam("Endereco") Endereco endereco,
@@ -42,7 +43,7 @@ public class ImovelController {
         return id + " Ok";
     }
 
-    @PutMapping(/{id})
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String atualizar(@PathVariable("id") int id) {
         return "x";  
