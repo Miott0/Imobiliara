@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class CorretorController {
 
 
-    @PostMapping()
+    @PostMapping("/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public void criar(@RequestParam("nome") String nome,
                         @RequestParam("sobrenome") String sobrenome,
@@ -31,10 +31,10 @@ public class CorretorController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String retornarId(@PathVariable("id") int id){
-        return id + " Ok";
+        return id + "Ok";
     }
 
-    @PutMapping()
+    @PutMapping("/atualizar")
     @ResponseStatus(HttpStatus.OK)
     public String atualizar(@RequestParam("nome") String nome,
                             @RequestParam("sobrenome") String sobrenome,
@@ -44,9 +44,9 @@ public class CorretorController {
         return "Dados do corretor " + id + " foram atualizados";  
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletar")
     @ResponseStatus(HttpStatus.OK)
-    public String deletar(@PathVariable("id") int id){
+    public String deletar( @RequestParam("id") int id){
         return id + " Conta deletada";
     }
 
