@@ -1,14 +1,30 @@
 package com.imobiliaria.entities;
+import jakarta.persistence.*;
 
+
+@Entity
 public class Administrador {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
+    private int id;
+
+    @Column(name ="senha", nullable = false,  length= 12)
     private String senha;
-    private int id; 
-
+    
     public Administrador(){
-
     }
 
-    public Administrador( int id){
+    public Administrador( String senha){
+        this.senha = senha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
