@@ -1,29 +1,61 @@
 package com.imobiliaria.entities;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Imovel")
 public class Imovel {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @Column(name="id")
     private int id;
-    private String tipo_imovel;
+
+    @Column(name="tipo_imovel")
+    private TipoImovel tipo_imovel;
+
+    @Column(name="area")
     private int area;
+
+    @Column(name="valor_venda")
     private float valor_venda;
+
+    @Column(name="valor_aluguel")
     private float valor_aluguel;
+
+    @Column(name="qtd_quartos")
     private int qtd_quartos;
-    private String aluguel_venda;
-    private boolean negociado;
-    private boolean valido;
+
+   @Column(name="aluguel_venda")
+    private TipoNegociacao aluguel_venda;
+
+    @Column(name="negociado")
+    private boolean negociado = false;
+
+    @Column(name="valido")
+    private boolean valido = false;
+
+    @OneToOne
     private Endereco endereco;
-    private Cliente Cliete;
+
+    @OneToOne
+    private Cliente cliente;
+
+    @OneToOne
     private Corretor corretor;
 
+    
     public Imovel() {
 
     }
 
 
-    public String getTipo_imovel() {
+    public TipoImovel getTipo_imovel() {
         return tipo_imovel;
     }
 
-    public void setTipo_imovel(String tipo_imovel) {
+    public void setTipo_imovel(TipoImovel tipo_imovel) {
         this.tipo_imovel = tipo_imovel;
     }
 
@@ -59,28 +91,22 @@ public class Imovel {
         this.qtd_quartos = qtd_quartos;
     }
 
-    public String getAluguel_venda() {
+    public TipoNegociacao getAluguel_venda() {
         return aluguel_venda;
     }
 
-    public void setAluguel_venda(String aluguel_venda) {
+    public void setAluguel_venda(TipoNegociacao aluguel_venda) {
         this.aluguel_venda = aluguel_venda;
-    }
+    } 
 
     public boolean isNegociado() {
         return negociado;
     }
 
-    public void setNegociado(boolean negociado) {
-        this.negociado = negociado;
-    }
+    
 
     public boolean isValido() {
         return valido;
-    }
-
-    public void setValido(boolean valido) {
-        this.valido = valido;
     }
 
     public Endereco getEndereco() {
@@ -90,13 +116,13 @@ public class Imovel {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
+ 
     public Cliente getCliete() {
-        return Cliete;
+        return cliente;
     }
 
-    public void setCliete(Cliente cliete) {
-        Cliete = cliete;
+    public void setCliete(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Corretor getCorretor() {
@@ -107,37 +133,22 @@ public class Imovel {
         this.corretor = corretor;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void RegistrarImovel(String aluguel_venda, int valor) {
-        this.aluguel_venda = aluguel_venda;
-        if (this.aluguel_venda == "aluguel e venda") {
-            this.valor_venda = valor;
-            this.valor_aluguel = valor;
-        } else if (this.aluguel_venda == "venda") {
-            this.valor_venda = valor;
-        } else {
-            this.valor_aluguel = valor;
+    public void DefinirStatus() {
+        if(this.negociado == false){
+            this.negociado = true;
         }
-
+        this.negociado = false;
     }
 
-    public boolean DefinirStatus() {
-        return false;
+    public void ValidarImovel() {
+        if(this.valido == false){
+            this.valido = true;
+        }
+        this.valido = false;
     }
 
-    public boolean ValidarImovel() {
-        return false;
-    }
-
-    public void BuscarImovel() {
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }
