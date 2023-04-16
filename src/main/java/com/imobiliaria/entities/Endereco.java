@@ -2,6 +2,7 @@ package com.imobiliaria.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Endereco {
@@ -12,15 +13,19 @@ public class Endereco {
     private int id;
 
     @Column(name="rua", length = 50)
+    @NotBlank(message = "campo nao pode ser vazio")
     private String rua;
 
     @Column(name="numero")
+    @NotBlank(message = "campo nao pode ser vazio")
     private String numero;
 
     @Column(name="cidade", length = 20)
+    @NotBlank(message = "campo nao pode ser vazio")
     private String cidade;
     
     @Column(name="estado", length = 20)
+    @NotBlank(message = "campo nao pode ser vazio")
     private String estado;
 
 

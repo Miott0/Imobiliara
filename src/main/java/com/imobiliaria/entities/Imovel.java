@@ -2,6 +2,7 @@ package com.imobiliaria.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Imovel")
@@ -13,9 +14,11 @@ public class Imovel {
     private int id;
 
     @Column(name="tipo_imovel")
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private TipoImovel tipo_imovel;
 
     @Column(name="area")
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private int area;
 
     @Column(name="valor_venda")
@@ -25,9 +28,11 @@ public class Imovel {
     private float valor_aluguel;
 
     @Column(name="qtd_quartos")
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private int qtd_quartos;
 
-   @Column(name="aluguel_venda")
+    @Column(name="aluguel_venda")
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private TipoNegociacao aluguel_venda;
 
     @Column(name="negociado")
@@ -37,9 +42,11 @@ public class Imovel {
     private boolean valido = false;
 
     @OneToOne
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private Endereco endereco;
 
     @OneToOne
+    @NotEmpty(message = "campo nao pode esatar vazio")
     private Cliente cliente;
 
     @OneToOne
