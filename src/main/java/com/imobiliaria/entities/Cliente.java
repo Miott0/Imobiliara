@@ -2,12 +2,17 @@ package com.imobiliaria.entities;
 
 import java.util.List;
 
+import com.imobiliaria.apirest.annotations.EmailValidation;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -18,12 +23,22 @@ public class Cliente {
     private int id;
 
     @Column(name="nome", length = 20)
+    @NotBlank(message = "campo nao pode esatar vazio")
     private String nome;
+
     @Column(name="sobrenome", length = 30)
+    @NotBlank(message = "campo nao pode esatar vazio")
     private String sobrenome;
-    @Column(name="email", length = 30)
+
+    @Column(name="email")
+    @NotBlank(message = "campo nao pode esatar vazio")
+    @EmailValidation(message = "email invalido")
     private String email;
+
+
     @Column(name="senha")
+    @NotEmpty(message = "Campo não pode ser vazio")
+    @Size(min=8, max=20)
     private String senha;
 
     @OneToMany
